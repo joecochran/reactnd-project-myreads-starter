@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BookShelf from './BookShelf';
 const ListBooks = (props) => {
-  const shelves = [...new Set(props.books.map(book => book.shelf))];
+  const shelves = ['currentlyReading', 'wantToRead', 'read'];
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -11,7 +11,9 @@ const ListBooks = (props) => {
       <div className="list-books-content">
         <div>
           {shelves.map((shelf, index) => (
-            <BookShelf onShelfUpdate={props.onShelfUpdate} key={index} title={shelf} books={props.books.filter(book => book.shelf === shelf)} />
+            props.books.filter(book => book.shelf === shelf).length > 0 && (
+              <BookShelf onShelfUpdate={props.onShelfUpdate} key={index} title={shelf} books={props.books.filter(book => book.shelf === shelf)} />
+            )
           ))}
         </div>
       </div>
