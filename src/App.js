@@ -12,6 +12,7 @@ class BooksApp extends React.Component {
         this.setState({ books });
       });
   }
+
   state = {
     books: []
   }
@@ -34,7 +35,7 @@ class BooksApp extends React.Component {
         )} />
 
         <Route exact path="/search" render={() => (
-          <SearchBooks />
+          <SearchBooks onShelfUpdate={this.updateShelf} books={this.state.books} />
         )} />
           
       </div>

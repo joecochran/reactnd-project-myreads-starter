@@ -6,7 +6,7 @@ const Book = (props) => {
     <li>
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${props.book.imageLinks.smallThumbnail}")` }}></div>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${typeof props.book.imageLinks.smallThumbnail !== 'undefined' && props.book.imageLinks.smallThumbnail}")` }}></div>
           <div className="book-shelf-changer">
             <select value={props.book.shelf} onChange={(e) => props.onShelfUpdate(props.book, e.target.value)}>
               <option value="move" disabled>Move to...</option>
@@ -18,7 +18,7 @@ const Book = (props) => {
           </div>
         </div>
         <div className="book-title">{props.book.title}</div>
-        <div className="book-authors">{props.book.authors.join(', ')}</div>
+        <div className="book-authors">{typeof props.books.authors !== 'undefined' && props.book.authors.join(', ')}</div>
       </div>
     </li>
   )
