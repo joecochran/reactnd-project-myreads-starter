@@ -6,8 +6,11 @@ import ListBooks from './components/ListBooks';
 import SearchBooks from './components/SearchBooks';
 
 class BooksApp extends Component {
-  state = {
-    books: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: []
+    }
   }
 
   componentDidMount() {

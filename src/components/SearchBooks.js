@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI.js';
 import Book from './Book';
 
 class SearchBooks extends Component {
-  state = {
-    query: '',
-    results: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
+      results: []
+    }
+    console.log(props);
   }
+  
   handleInput = (e) => {
     this.setState({
       query: e.target.value
@@ -56,5 +62,10 @@ class SearchBooks extends Component {
     )
   }
 }
+
+SearchBooks.propTypes = {
+  books: PropTypes.array,
+  onShelfUpdate: PropTypes.func.isRequired
+};
 
 export default SearchBooks;
