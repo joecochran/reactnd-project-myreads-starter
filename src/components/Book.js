@@ -18,7 +18,7 @@ const Book = (props) => {
           </div>
         </div>
         <div className="book-title">{props.book.title}</div>
-        <div className="book-authors">{typeof props.books.authors !== 'undefined' && props.book.authors.join(', ')}</div>
+        <div className="book-authors">{typeof props.book.authors !== 'undefined' && props.book.authors.join(', ')}</div>
       </div>
     </li>
   )
