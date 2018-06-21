@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import BookShelf from './BookShelf';
+
 const ListBooks = (props) => {
   const shelves = ['currentlyReading', 'wantToRead', 'read'];
   return (
@@ -10,9 +12,14 @@ const ListBooks = (props) => {
       </div>
       <div className="list-books-content">
         <div>
-          {shelves.map((shelf, index) => (
+          {shelves.map(shelf => (
             props.books.filter(book => book.shelf === shelf).length > 0 && (
-              <BookShelf onShelfUpdate={props.onShelfUpdate} key={index} title={shelf} books={props.books.filter(book => book.shelf === shelf)} />
+              <BookShelf
+                onShelfUpdate={props.onShelfUpdate}
+                key={shelf}
+                title={shelf}
+                books={props.books.filter(book => book.shelf === shelf)}
+              />
             )
           ))}
         </div>
@@ -21,7 +28,12 @@ const ListBooks = (props) => {
         <Link to="/search">Add a book</Link>
       </div>
     </div>
-  )
-}
+  );
+};
+
+ListBooks.propTypes = {
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onShelfUpdate: PropTypes.func.isRequired,
+};
 
 export default ListBooks;
